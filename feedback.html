@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UMES Dining Hall Feedback</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <header>
+      <h1>UMES Dining Hall</h1>
+    </header>
+
+    <nav>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="menu.html">Menu</a></li>
+        <li><a href="hours.html">Hours</a></li>
+        <li><a href="feedback.html">Feedback</a></li>
+      </ul>
+    </nav>
+
+    <main>
+      <h2>Feedback Form</h2>
+      <p>We value your opinion. Please rate your dining hall experience.</p>
+
+      <form
+        id="feedbackForm"
+        class="feedback-form"
+        onsubmit="return submitFeedback()"
+      >
+        <div class="form-group">
+          <label for="rating">Rate Your Experience:</label>
+          <select id="rating" name="rating">
+            <option value="">-- Select Rating --</option>
+            <option value="5">Excellent</option>
+            <option value="4">Very Good</option>
+            <option value="3">Good</option>
+            <option value="2">Fair</option>
+            <option value="1">Poor</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="comments">Comments:</label>
+          <textarea id="comments" name="comments" rows="4"></textarea>
+        </div>
+
+        <button type="submit" class="submit-btn">Submit Feedback</button>
+      </form>
+
+      <p id="result"></p>
+    </main>
+
+    <footer>
+      <p>&copy; 2025 UMES Dining Hall. All rights reserved.</p>
+    </footer>
+
+    <script>
+      function submitFeedback() {
+        let rating = document.getElementById("rating").value;
+        let comments = document.getElementById("comments").value;
+        let result = document.getElementById("result");
+
+        if (rating === "") {
+          result.style.color = "red";
+          result.innerHTML = "Please select a rating.";
+          return false;
+        }
+
+        if (comments.trim() === "") {
+          result.style.color = "red";
+          result.innerHTML = "Please enter your comments.";
+          return false;
+        }
+
+        result.style.color = "green";
+        result.innerHTML = "Thank you for your feedback!";
+
+        document.getElementById("feedbackForm").reset();
+        return false;
+      }
+    </script>
+  </body>
+</html>
